@@ -1,0 +1,7 @@
+Theta [deg],Phi [deg],RealizedGainTotal [dB]
+0,0,-5
+0,90,-5
+30,0,0
+30,90,-1
+60,0,-3
+60,90,-4

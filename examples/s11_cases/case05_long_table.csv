@@ -1,0 +1,7 @@
+Freq [MHz],S11 [dB],Case
+400,-9.0,Simulated
+450,-18.0,Simulated
+500,-10.0,Simulated
+400,-7.8,Measured
+450,-15.2,Measured
+500,-9.3,Measured

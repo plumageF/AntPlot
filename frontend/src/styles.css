@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Microsoft YaHei",
+    sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.antplot-logo-mark {
+  position: relative;
+  display: grid;
+  height: 44px;
+  width: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(8, 15, 40, 0.22);
+}
+
+.antplot-logo-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.app-shell {
+  display: flex;
+  height: 100vh;
+  min-height: 720px;
+  overflow: hidden;
+}
+
+.main-shell {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.workspace-grid {
+  display: grid;
+  min-height: 0;
+  flex: 1;
+  grid-template-columns: 380px minmax(0, 1fr);
+  gap: 16px;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.workflow-grid {
+  display: grid;
+  min-height: 0;
+  flex: 1;
+  grid-template-columns: minmax(520px, 1.05fr) minmax(520px, 0.95fr);
+  gap: 16px;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.settings-scroll {
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.canvas-panel {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.canvas-body {
+  position: relative;
+  height: calc(100% - 110px);
+  min-height: 0;
+}
+
+.field {
+  height: 38px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgb(203 213 225);
+  background: rgb(248 250 252);
+  padding: 0 10px;
+  font-size: 14px;
+  color: rgb(15 23 42);
+  outline: none;
+}
+
+.field:focus {
+  border-color: rgb(99 102 241);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.14);
+}
+
+.dark .field {
+  border-color: rgb(30 41 59);
+  background: rgb(15 23 42);
+  color: rgb(241 245 249);
+}
+
+.error-focus-pulse {
+  box-shadow:
+    0 0 0 3px rgba(239, 68, 68, 0.35),
+    0 0 0 8px rgba(239, 68, 68, 0.12);
+}
+
+.plot-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 8px;
+  border-radius: 6px;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 14px;
+  color: rgb(71 85 105);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.plot-button:hover {
+  background: rgb(226 232 240);
+}
+
+.plot-button-active {
+  background: rgb(79 70 229);
+  color: white;
+}
+
+.soft-btn {
+  border-radius: 0.375rem;
+  border: 1px solid rgb(203 213 225);
+  background: rgb(255 255 255);
+  padding: 0.45rem 0.65rem;
+  font-weight: 700;
+  color: rgb(51 65 85);
+}
+
+.soft-btn:hover {
+  background: rgb(248 250 252);
+}
+
+.dark .soft-btn {
+  border-color: rgb(51 65 85);
+  background: rgb(15 23 42);
+  color: rgb(226 232 240);
+}
+
+.dark .soft-btn:hover {
+  background: rgb(30 41 59);
+}
+
+.plot-button-active:hover {
+  background: rgb(67 56 202);
+}
+
+.icon-btn {
+  display: grid;
+  height: 32px;
+  width: 32px;
+  place-items: center;
+  border-radius: 6px;
+  background: rgb(241 245 249);
+  color: rgb(51 65 85);
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.icon-btn:hover {
+  background: rgb(226 232 240);
+}
+
+.icon-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.dark .plot-button {
+  color: rgb(203 213 225);
+}
+
+.dark .plot-button:hover {
+  background: rgb(30 41 59);
+}
+
+.dark .plot-button-active,
+.dark .plot-button-active:hover {
+  background: rgb(79 70 229);
+  color: white;
+}
+
+.dark .icon-btn {
+  background: rgb(15 23 42);
+  color: rgb(203 213 225);
+}
+
+.dark .icon-btn:hover {
+  background: rgb(30 41 59);
+}
+
+@media (max-width: 1180px) {
+  .workspace-grid {
+    grid-template-columns: 340px minmax(0, 1fr);
+  }
+
+  .workflow-grid {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply flex w-full items-center justify-between rounded-xl px-2 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200;
+  }
+
+  .nav-item {
+    @apply flex h-10 w-full items-center gap-2 rounded-xl px-3 text-left text-sm font-medium transition;
+  }
+
+  .card {
+    @apply rounded-3xl border border-slate-200 bg-white/90 p-4 shadow-soft dark:border-white/10 dark:bg-slate-950/60;
+  }
+
+  .card-title {
+    @apply mb-4 flex items-center gap-2 text-sm font-semibold text-slate-800 dark:text-slate-100;
+  }
+
+  .field-label {
+    @apply mb-2 block text-sm font-medium text-slate-500 dark:text-slate-400;
+  }
+
+  .control {
+    @apply h-11 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-[var(--accent)] dark:border-white/10 dark:bg-slate-900;
+  }
+}

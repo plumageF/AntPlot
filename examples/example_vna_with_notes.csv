@@ -1,0 +1,10 @@
+Instrument;VNA
+Operator;Lab
+Comment;S11 sweep with decimal comma and missing value
+Frequency;S11
+MHz;dB
+410,0;-12,3
+430,0;-15,1
+450,0;
+450,0;-16,0
+490,0;-11,8

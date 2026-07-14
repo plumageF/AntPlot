@@ -1,0 +1,46 @@
+figure:
+  width: single
+  single_width: 3.45
+  double_width: 7.0
+  height: 2.62
+  dpi: 600
+
+font:
+  family: Times New Roman
+  fallback: DejaVu Serif
+  size: 9.2
+  label_size: 10
+  tick_size: 9.2
+  legend_size: 9.2
+  weight: bold
+
+line:
+  width: 1.55
+  marker_size: 3.8
+  markers: true
+  smooth: false
+
+axis:
+  spine_width: 1.0
+  tick_direction: in
+  grid: false
+  grid_alpha: 0.0
+
+colors:
+  s11: "#F23B3B"
+  gain: "#F23B3B"
+  gray: "#555555"
+  black: "#111111"
+  cycle: ["#4D4D4D", "#F23B3B", "#1F6FE5", "#2EAD67"]
+
+markers:
+  cycle: [s, o, "^", D, v, P]
+
+frequency:
+  unit: mhz
+
+legend:
+  loc: upper left
+
+export:
+  formats: [png, pdf, svg]

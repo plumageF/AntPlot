@@ -1,0 +1,33 @@
+figure:
+  width: single
+  single_width: 3.45
+  double_width: 7.0
+  height: 2.35
+  dpi: 600
+
+font:
+  family: Times New Roman
+  fallback: DejaVu Serif
+  size: 8
+  label_size: 8.5
+  tick_size: 7.5
+  legend_size: 7.5
+
+line:
+  width: 1.55
+  marker_size: 3.5
+
+axis:
+  spine_width: 0.85
+  tick_direction: in
+  grid: true
+  grid_alpha: 0.14
+
+colors:
+  s11: "#B71C1C"
+  gain: "#0D47A1"
+  gray: "#555555"
+  black: "#111111"
+
+export:
+  formats: [png, pdf, svg]

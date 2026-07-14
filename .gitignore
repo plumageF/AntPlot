@@ -1,0 +1,29 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Frontend dependencies and generated builds
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+
+# Local previews, exports, logs, and user data
+outputs/
+work/
+*.log
+*.tmp
+examples/*figures*/
+examples/**/*.pdf
+examples/**/*.png
+examples/**/*.svg
+
+# Local archives and IDE settings
+frontend.zip
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+.DS_Store

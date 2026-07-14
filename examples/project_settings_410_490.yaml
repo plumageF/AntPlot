@@ -1,0 +1,9 @@
+project:
+  working_band_mhz: [410, 490]
+  s11_threshold_db: -10
+  vswr_threshold: 2
+  axial_ratio_threshold_db: 3
+  min_gain_dbi: 0
+  port_impedance_ohm: 50
+  pattern_frequencies_mhz: [410, 450, 490]
+  prefer_realized_gain: true

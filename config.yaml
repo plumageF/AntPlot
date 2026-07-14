@@ -1,0 +1,25 @@
+style:
+  preset: ieee_tap
+
+export:
+  output_dir: figures
+  formats: [png, pdf, svg, json, txt, md]
+
+project:
+  working_band_mhz: null
+  s11_threshold_db: -10
+  vswr_threshold: 2
+  axial_ratio_threshold_db: 3
+  min_gain_dbi: 0
+  port_impedance_ohm: 50
+  pattern_frequencies_mhz: [410, 450, 490]
+  prefer_realized_gain: true
+
+s11:
+  threshold: -10
+  mark_band: true
+
+manual:
+  allow_column_override: true
+  allow_axis_override: true
+  allow_annotation_override: true
