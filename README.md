@@ -10,7 +10,7 @@ AntPlot is a local scientific plotting application and reproducible engineering 
 
 **入口 / Quick links:** [Windows Quick Start](#windows-quick-start) · [Source Installation](#source-installation) · [User Guide](docs/USER_GUIDE.md) · [Example Gallery](examples/gallery) · [Releases](https://github.com/plumageF/AntPlot/releases) · [Test Report](docs/TEST_REPORT_v0.1.0.md)
 
-![S11 example](examples/gallery/s11_standard.png)
+![S11 bandwidth example](docs/images/antplot-s11-comparison.png)
 
 ## What AntPlot does / 项目定位
 
