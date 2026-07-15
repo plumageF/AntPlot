@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: AntPlot
+message: "If AntPlot contributes to your work, please cite the repository and the version used."
+version: 0.1.0
+date-released: 2026-07-15
+type: software
+repository-code: "https://github.com/plumageF/AntPlot"
+url: "https://github.com/plumageF/AntPlot"
+license: MIT
+authors:
+  - family-names: plumageF
+    given-names: AntPlot maintainers

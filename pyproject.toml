@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "antplot"
+version = "0.1.0"
+description = "Local antenna and RF scientific plotting tool for HFSS, CST, ADS and VNA data"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "AntPlot maintainers" }]
+keywords = ["antenna", "rf", "hfss", "cst", "ads", "vna", "s-parameters", "smith-chart", "radiation-pattern", "scientific-plotting", "matplotlib", "csv"]
+dependencies = [
+  "numpy>=1.26",
+  "matplotlib>=3.8",
+]
+
+[project.urls]
+Homepage = "https://github.com/plumageF/AntPlot"
+Repository = "https://github.com/plumageF/AntPlot"
+Issues = "https://github.com/plumageF/AntPlot/issues"

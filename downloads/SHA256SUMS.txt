@@ -1,0 +1,4 @@
+7d5564ceaf0c8d57323b2e03df5043b660db3065f13a32f469e50a7542ddac71  AntPlot-Windows-Portable-v0.1.0.zip
+7d5564ceaf0c8d57323b2e03df5043b660db3065f13a32f469e50a7542ddac71  AntPlot-Windows-Quick-Start-v0.1.0.zip
+a8ea06237beadffb0b48bd2d9dba471625bf20fb77bc42c6d0bfd8ad1af127fc  AntPlot-Test-Data-v0.1.0.zip
+149fd9270b50f3a0f5f916dda92509299f52382a7fd52ca52737f8fdd543156d  AntPlot-Test-Results-v0.1.0.zip

@@ -1,104 +1,130 @@
-# AntPlot
+# AntPlot — Antenna and RF Scientific Plotting Tool
 
-AntPlot is a local HFSS/antenna data plotting tool for turning exported simulation or measurement data into reproducible scientific figures. It provides CSV recognition, curve management, backend-rendered previews, engineering checks, and PNG/PDF/SVG/JSON/report exports.
+**面向 HFSS、CST、ADS 和 VNA 数据的本地科研绘图工具**
 
-AntPlot converts HFSS, ADS, VNA, CST, and manually prepared curve data into reproducible antenna figures. It is a local application: input data and exported figures remain on your computer.
+Turn HFSS, CST, ADS, VNA and generic CSV data into reproducible, publication-ready antenna and RF figures.
 
-Repository: <https://github.com/plumageF/AntPlot>
+AntPlot is a local scientific plotting application and reproducible engineering plotting workflow. It reads local files, renders previews through the Python backend, and keeps source data and exports on the user's computer.
 
-For a complete Chinese/English walkthrough, see [the user guide](docs/USER_GUIDE.md). Representative input files and generated figures are in [examples/gallery](examples/gallery).
+[![Python regression](https://github.com/plumageF/AntPlot/actions/workflows/validate.yml/badge.svg)](https://github.com/plumageF/AntPlot/actions/workflows/validate.yml) [![License](https://img.shields.io/github/license/plumageF/AntPlot)](LICENSE) [![Latest release](https://img.shields.io/github/v/release/plumageF/AntPlot)](https://github.com/plumageF/AntPlot/releases)
 
-For a report-style verification package, download the [test data archive](downloads/AntPlot-Test-Data-v0.1.0.zip), the [generated results archive](downloads/AntPlot-Test-Results-v0.1.0.zip), and read the [v0.1.0 test report](docs/TEST_REPORT_v0.1.0.md).
+**入口 / Quick links:** [Windows Quick Start](#windows-quick-start) · [Source Installation](#source-installation) · [User Guide](docs/USER_GUIDE.md) · [Example Gallery](examples/gallery) · [Releases](https://github.com/plumageF/AntPlot/releases) · [Test Report](docs/TEST_REPORT_v0.1.0.md)
 
-## Features
+![S11 example](examples/gallery/s11_standard.png)
 
-- HFSS-style CSV recognition for S11, VSWR, realized gain, axial ratio, efficiency, HPBW, radiation patterns, and Smith charts.
-- Automatic, semi-automatic, and manual mapping when data columns cannot be identified reliably.
-- Multiple CSV and parameter-sweep curve overlays with per-curve style controls.
-- Cartesian and polar radiation-pattern rendering.
-- Backend-matched preview and export to PNG, PDF, SVG, JSON, and engineering reports.
-- XY Multi-Curve mode for strictly formatted generic XY data.
+## What AntPlot does / 项目定位
 
-## Requirements
+- Imports HFSS, CST, ADS, VNA and manually prepared CSV-style data.
+- Recognizes S-parameters, VSWR, realized gain, axial ratio, efficiency, HPBW, radiation patterns and Smith-chart data.
+- Supports automatic recognition, semi-automatic mapping confirmation, manual override, and free XY Multi-Curve mode.
+- Overlays simulated, measured, reference and parameter-sweep curves with reproducible styles.
+- Renders Cartesian and polar radiation patterns through the same backend used for export.
+- Exports PNG (600 dpi), PDF, SVG, JSON configuration and engineering reports.
 
-- Windows 10/11
-- Python 3.10 or newer
-- Node.js 20 or newer
-- pnpm, enabled through Corepack (`corepack enable`)
+## Supported plot types
 
-## Windows portable package
+| Plot | Typical input | Notes |
+| --- | --- | --- |
+| S11 / Return Loss | Frequency + dB or derived complex data | Threshold and bandwidth checks |
+| VSWR | Frequency + VSWR or S11 | VSWR threshold checks |
+| Realized Gain | Frequency + gain | Uses dBi when absolute |
+| Radiation Pattern | Theta/Phi/Angle + gain or polarization component | Cartesian or polar |
+| Axial Ratio | Frequency or angle + AR | 3 dB threshold |
+| Efficiency / HPBW | Frequency or derived pattern data | Engineering checks with warnings |
+| Smith Chart | re/im S or impedance, mag/phase | Reference impedance must be confirmed |
+| XY Multi-Curve | Standard wide-table CSV | No engineering pass/fail conclusions |
 
-Download [`AntPlot-Windows-Portable-v0.1.0.zip`](downloads/AntPlot-Windows-Portable-v0.1.0.zip). It contains the prebuilt frontend, source code, sample data, and generated example figures. Node.js and pnpm are not required for this package. A GitHub Release asset may be added later; this repository download is the current canonical package.
+## Screenshots and example gallery
 
-1. Extract the ZIP to a writable folder, such as `D:\AntPlot`.
-2. Ensure Python 3.10+ is available through `py` or `python`.
-3. Double-click `install_and_start.bat`.
-4. On its first run, it creates `.venv` and installs `requirements.txt`.
-5. Open <http://127.0.0.1:4173/>.
+The gallery contains real backend-generated figures and their input CSV files:
 
-The first setup needs an internet connection for Python packages. Later launches use `start_portable.bat`.
+![S11 comparison](examples/gallery/s11_standard.png)
+![Polar radiation pattern](examples/gallery/pattern_polar.png)
+![Smith chart](examples/gallery/smith.png)
 
-## Local deployment
+See [examples/gallery/README.md](examples/gallery/README.md) for the input, plot type, settings and expected result of each example. Screenshots are intentionally based on real project outputs; no mock UI images are included.
 
-Clone the repository and enter it:
+## Windows Quick Start
+
+Download [`AntPlot-Windows-Quick-Start-v0.1.0.zip`](https://github.com/plumageF/AntPlot/releases/download/v0.1.0/AntPlot-Windows-Quick-Start-v0.1.0.zip) from the [latest Release](https://github.com/plumageF/AntPlot/releases/latest). The package includes a prebuilt frontend, backend source, examples and documentation. It is a **Quick Start package, not a standalone EXE**: Python 3.10+ is still required; Node.js and pnpm are not required.
+
+1. Extract the ZIP to a writable folder.
+2. Confirm `py -3` or `python` reports Python 3.10 or newer.
+3. Run `install_and_start.bat`.
+4. Open <http://127.0.0.1:4173/>.
+
+The first run installs Python dependencies and needs network access. Later launches can use `start_portable.bat`.
+
+## Source Installation
 
 ```powershell
-git clone https://github.com/<your-account>/antplot.git
-cd antplot
-```
-
-Create a Python environment and install backend packages:
-
-```powershell
-py -m venv .venv
+git clone https://github.com/plumageF/AntPlot.git
+cd AntPlot
+py -3 -m venv .venv
 .\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-```
-
-Install and build the frontend:
-
-```powershell
 corepack enable
 cd frontend
 pnpm install --frozen-lockfile
 pnpm build
 cd ..
-```
-
-Start both services:
-
-```powershell
 .\start_app.bat
 ```
 
-Open `http://127.0.0.1:4173/` in a browser. The local Python API runs on `http://127.0.0.1:8765/`.
+Open `http://127.0.0.1:4173/`. The local API is bound to `127.0.0.1:8765` by default. If PowerShell blocks scripts, use the `.bat` launchers or run the equivalent commands manually.
 
-If PowerShell blocks script execution, use the `.bat` launcher above or run the commands manually.
+## Input data and engineering checks
 
-## Development checks
+Read [Data Formats](docs/DATA_FORMATS.md) before preparing a CSV. Automatic recognition checks names, units, sweeps, fixed variables and curve families; ambiguous fields remain warnings or require confirmation. The application does not estimate engineering results from image pixels, silently smooth data, or silently delete abnormal points. Reference impedance, de-embedding, pattern cut, polarization and normalization state must be reviewed by the user.
+
+AntPlot assists with data visualization and engineering checks, but it does not replace simulation setup review, calibration verification or professional engineering judgment.
+
+## Testing
 
 ```powershell
-.\.venv\Scripts\python.exe tools\recognition_regression.py
+python -m pip install -r requirements.txt
+python tools\recognition_regression.py
+python tools\final_acceptance.py
 cd frontend
+pnpm install --frozen-lockfile
 pnpm build
 ```
 
-## Repository layout
+The public acceptance suite uses only repository fixtures and does not depend on `D:\CSV`, `G:\` or any developer-specific path. Results and generated artifacts are described in [the v0.1.0 test report](docs/TEST_REPORT_v0.1.0.md).
+
+## Repository structure
 
 ```text
-src/hfss_paperplotter/  Python parsing, recognition, plotting, metrics, and API
-frontend/               React + Tailwind user interface
-examples/               Sample CSV data
-tools/                  Regression and acceptance scripts
-styles/                 Paper/HFSS-like style definitions
-docs/                   Deployment and operating guides
+src/hfss_paperplotter/  Python parsing, recognition, plotting, metrics and API
+frontend/               React + Tailwind interface
+examples/               Public fixtures and generated gallery figures
+tools/                  Regression and acceptance runners
+docs/                   User, data, release and development documentation
+styles/                 Plot style definitions
 ```
 
-## Data and engineering notes
+## Roadmap
 
-AntPlot does not use image pixels to calculate engineering metrics. It retains warnings when units, port reference planes, normalization, or pattern cuts cannot be confirmed. Review these warnings before using a figure in a publication.
+### v0.2
+
+- Improve Touchstone S1P/S2P validation.
+- Add more measured-versus-simulated templates.
+- Improve batch plotting and project recovery.
+- Add more non-standard CST/ADS column fixtures.
+
+### Future
+
+- Standalone Windows executable.
+- Linux and macOS launch support.
+- Additional publication style presets.
+- Optional plugin architecture.
+
+These are plans, not current guarantees.
+
+## Contributing, security and citation
+
+See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), [CITATION.cff](CITATION.cff), and [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
-This project is released under the MIT License. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).

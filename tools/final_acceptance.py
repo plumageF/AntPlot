@@ -62,13 +62,9 @@ def clean() -> None:
 
 
 def test_01_standard_hfss_s11() -> str:
-    provided = Path(r"D:\CSV\11.7.csv")
-    if provided.exists():
-        header = provided.read_text(encoding="utf-8-sig", errors="ignore").splitlines()[0]
-        require("dB(S(1,1))" in header or "S11" in header, f"provided file is not an S11 CSV: {header}")
-        source = provided
-    else:
-        source = ROOT / "examples" / "s11_cases" / "case01_hfss_standard.csv"
+    # Public acceptance must be reproducible on CI and must not depend on a
+    # developer-specific drive letter or private measurement file.
+    source = ROOT / "examples" / "s11_cases" / "case01_hfss_standard.csv"
     out = OUT / "01_standard_hfss"
     cp = run(["s11", str(source), "--output-dir", str(out), "--formats", "png", "json", "txt"])
     require(cp.returncode == 0, cp.stderr or cp.stdout)
