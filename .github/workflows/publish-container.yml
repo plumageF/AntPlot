@@ -1,0 +1,47 @@
+name: Publish Container
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Container tag to publish
+        required: true
+        default: v0.1.1
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve image tag
+        id: meta
+        shell: bash
+        run: |
+          tag="${{ github.event.inputs.version }}"
+          if [ -z "$tag" ]; then
+            tag="${{ github.event.release.tag_name }}"
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/plumagef/antplot:${{ steps.meta.outputs.tag }}
+            ghcr.io/plumagef/antplot:latest

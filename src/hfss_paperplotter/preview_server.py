@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import mimetypes
+import os
 import time
 from argparse import Namespace
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -331,8 +332,10 @@ class PreviewHandler(BaseHTTPRequestHandler):
 
 
 def main() -> None:
-    server = ThreadingHTTPServer(("127.0.0.1", 8765), PreviewHandler)
-    print("HFSS Paper Plotter preview server: http://127.0.0.1:8765")
+    host = os.environ.get("ANTPLOT_HOST", "127.0.0.1")
+    port = int(os.environ.get("ANTPLOT_PORT", "8765"))
+    server = ThreadingHTTPServer((host, port), PreviewHandler)
+    print(f"HFSS Paper Plotter preview server: http://{host}:{port}")
     server.serve_forever()
 
 

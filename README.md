@@ -46,7 +46,7 @@ See [examples/gallery/README.md](examples/gallery/README.md) for the input, plot
 
 ## Windows Quick Start
 
-Download [`AntPlot-Windows-Quick-Start-v0.1.0.zip`](https://github.com/plumageF/AntPlot/releases/download/v0.1.0/AntPlot-Windows-Quick-Start-v0.1.0.zip) from the [latest Release](https://github.com/plumageF/AntPlot/releases/latest). The package includes a prebuilt frontend, backend source, examples and documentation. It is a **Quick Start package, not a standalone EXE**: Python 3.10+ is still required; Node.js and pnpm are not required.
+Download [`AntPlot-Windows-Quick-Start-v0.1.1.zip`](https://github.com/plumageF/AntPlot/releases/download/v0.1.1/AntPlot-Windows-Quick-Start-v0.1.1.zip) from the [latest Release](https://github.com/plumageF/AntPlot/releases/latest). The package includes a prebuilt frontend, backend source, examples and documentation. It is a **Quick Start package, not a standalone EXE**: Python 3.10+ is still required; Node.js and pnpm are not required.
 
 1. Extract the ZIP to a writable folder.
 2. Confirm `py -3` or `python` reports Python 3.10 or newer.
@@ -54,6 +54,17 @@ Download [`AntPlot-Windows-Quick-Start-v0.1.0.zip`](https://github.com/plumageF/
 4. Open <http://127.0.0.1:4173/>.
 
 The first run installs Python dependencies and needs network access. Later launches can use `start_portable.bat`.
+
+## GitHub Packages / Docker
+
+AntPlot is also published as a GitHub Container Registry package:
+
+```powershell
+docker pull ghcr.io/plumagef/antplot:v0.1.1
+docker run --rm -p 4173:4173 -p 8765:8765 ghcr.io/plumagef/antplot:v0.1.1
+```
+
+Open <http://127.0.0.1:4173/> after the container starts. The frontend is served on port `4173`; the backend plotting API is served on port `8765`.
 
 ## Source Installation
 

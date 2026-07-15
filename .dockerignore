@@ -1,0 +1,17 @@
+.git
+.agents
+.codex
+.venv
+__pycache__
+*.pyc
+*.log
+*.tmp
+frontend/node_modules
+frontend/dist
+frontend/*.tsbuildinfo
+outputs
+work
+release
+downloads
+AntPlot-source.zip
+frontend.zip
