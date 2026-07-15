@@ -2,7 +2,11 @@
 
 AntPlot is a local HFSS/antenna data plotting tool for turning exported simulation or measurement data into reproducible scientific figures. It provides CSV recognition, curve management, backend-rendered previews, engineering checks, and PNG/PDF/SVG/JSON/report exports.
 
-The project description and example gallery are being prepared. This README currently focuses on local deployment.
+AntPlot converts HFSS, ADS, VNA, CST, and manually prepared curve data into reproducible antenna figures. It is a local application: input data and exported figures remain on your computer.
+
+Repository: <https://github.com/plumageF/AntPlot>
+
+For a complete Chinese/English walkthrough, see [the user guide](docs/USER_GUIDE.md). Representative input files and generated figures are in [examples/gallery](examples/gallery).
 
 ## Features
 
@@ -19,6 +23,18 @@ The project description and example gallery are being prepared. This README curr
 - Python 3.10 or newer
 - Node.js 20 or newer
 - pnpm, enabled through Corepack (`corepack enable`)
+
+## Windows portable package
+
+The GitHub **Releases** page provides `AntPlot-Windows-Portable-v0.1.0.zip`. It contains the prebuilt frontend, source code, sample data, and generated example figures. Node.js and pnpm are not required for this package.
+
+1. Extract the ZIP to a writable folder, such as `D:\AntPlot`.
+2. Ensure Python 3.10+ is available through `py` or `python`.
+3. Double-click `install_and_start.bat`.
+4. On its first run, it creates `.venv` and installs `requirements.txt`.
+5. Open <http://127.0.0.1:4173/>.
+
+The first setup needs an internet connection for Python packages. Later launches use `start_portable.bat`.
 
 ## Local deployment
 
@@ -74,6 +90,7 @@ frontend/               React + Tailwind user interface
 examples/               Sample CSV data
 tools/                  Regression and acceptance scripts
 styles/                 Paper/HFSS-like style definitions
+docs/                   Deployment and operating guides
 ```
 
 ## Data and engineering notes
@@ -82,4 +99,4 @@ AntPlot does not use image pixels to calculate engineering metrics. It retains w
 
 ## License
 
-License information will be added before the public release.
+This project is released under the MIT License. See [LICENSE](LICENSE).

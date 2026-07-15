@@ -18,9 +18,13 @@ examples/*figures*/
 examples/**/*.pdf
 examples/**/*.png
 examples/**/*.svg
+!examples/gallery/
+!examples/gallery/**
 
 # Local archives and IDE settings
 frontend.zip
+AntPlot-source.zip
+release/
 .vscode/
 .idea/
 
