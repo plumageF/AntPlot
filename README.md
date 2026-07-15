@@ -8,6 +8,8 @@ Repository: <https://github.com/plumageF/AntPlot>
 
 For a complete Chinese/English walkthrough, see [the user guide](docs/USER_GUIDE.md). Representative input files and generated figures are in [examples/gallery](examples/gallery).
 
+For a report-style verification package, download the [test data archive](downloads/AntPlot-Test-Data-v0.1.0.zip), the [generated results archive](downloads/AntPlot-Test-Results-v0.1.0.zip), and read the [v0.1.0 test report](docs/TEST_REPORT_v0.1.0.md).
+
 ## Features
 
 - HFSS-style CSV recognition for S11, VSWR, realized gain, axial ratio, efficiency, HPBW, radiation patterns, and Smith charts.
