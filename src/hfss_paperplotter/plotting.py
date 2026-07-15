@@ -876,7 +876,11 @@ def plot_pattern(dataset: HfssDataset, output_dir: Path, style: dict, args: Name
         if pattern_info.scan_variable == "phi":
             mask = np.isclose(theta, pattern_info.fixed_value_deg, atol=1e-6) if pattern_info.fixed_value_deg is not None else np.isfinite(phi)
             angle_values = phi
-            cut_text = pattern_info.description()
+            cut_text = (
+                rf"$\theta$ = {pattern_info.fixed_value_deg:g}$^\circ$"
+                if pattern_info.fixed_value_deg is not None
+                else r"$\phi$ sweep"
+            )
         else:
             mask = np.isclose(phi, cut, atol=1e-6)
             angle_values = theta
@@ -889,7 +893,8 @@ def plot_pattern(dataset: HfssDataset, output_dir: Path, style: dict, args: Name
             g = gain[mask][order]
             role = polarization_role(value_cols[column_index])
             role_text = "" if role == "unknown" else f" ({role.replace('_', ' ')})"
-            label = compact_pattern_label(value_cols[column_index])
+            quantity_label = compact_pattern_label(value_cols[column_index])
+            label = cut_text if len(value_cols) == 1 else f"{cut_text} / {quantity_label}"
             ax.plot(
                 t,
                 g,
@@ -904,9 +909,9 @@ def plot_pattern(dataset: HfssDataset, output_dir: Path, style: dict, args: Name
     ax.set_ylabel(normalized_pattern_label(is_normalized), labelpad=22)
     ax.grid(True, alpha=style["axis"]["grid_alpha"])
     ax.legend(
-        loc="lower center",
-        bbox_to_anchor=(0.5, -0.16),
-        ncol=max(1, min(2, len(value_cols))),
+        loc="center left",
+        bbox_to_anchor=(1.08, 0.5),
+        ncol=1,
         fontsize=style.get("font", {}).get("legend_size", 8),
         frameon=False,
     )
