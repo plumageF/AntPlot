@@ -26,7 +26,7 @@ For a complete Chinese/English walkthrough, see [the user guide](docs/USER_GUIDE
 
 ## Windows portable package
 
-The GitHub **Releases** page provides `AntPlot-Windows-Portable-v0.1.0.zip`. It contains the prebuilt frontend, source code, sample data, and generated example figures. Node.js and pnpm are not required for this package.
+Download [`AntPlot-Windows-Portable-v0.1.0.zip`](downloads/AntPlot-Windows-Portable-v0.1.0.zip). It contains the prebuilt frontend, source code, sample data, and generated example figures. Node.js and pnpm are not required for this package. A GitHub Release asset may be added later; this repository download is the current canonical package.
 
 1. Extract the ZIP to a writable folder, such as `D:\AntPlot`.
 2. Ensure Python 3.10+ is available through `py` or `python`.

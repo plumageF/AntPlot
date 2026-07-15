@@ -25,6 +25,8 @@ examples/**/*.svg
 frontend.zip
 AntPlot-source.zip
 release/
+!downloads/
+!downloads/**
 .vscode/
 .idea/
 
